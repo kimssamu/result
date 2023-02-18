@@ -23,14 +23,14 @@
         background-size: 50%;
         background-position: -400%;
 	    justify-content: center; /* flexable하게 바꿀건데 가운데로 정렬*/
-	    background-image: url('./c1deb3d3aeb8a2bf6ebabe4e6d4aa52b_res.jpeg') /*같은 폴더안에있는 백그라운드 png를 가져와라*/
+	    background-image: url('./KakaoTalk_Photo_2023-02-18-18-02-25.jpeg') /*같은 폴더안에있는 백그라운드 png를 가져와라*/
         
         }
 
         /* 너비는 390픽셀이구, 배경색이 좀 필요하고 부모(body) 높이 전체를 쓸거야 */
         .container {
 	    width: 290px;
-	    background-color: black;
+	    background-color:floralwhite ;
 	    height: 100%; /*container을 둘러싸고 있는게 body태그인데 그 body를 전체를 차지하겠다는 뜻*/
         }
 
@@ -44,7 +44,7 @@
         .photo-frame {
 	    background-color: white;
 	    margin: 20px 20px; /*세로와 가로의 마진 크기 정함*/ 
-	    height: 260px;
+	    height: 250px;
         background-size: cover; /*이미지 크기 맞추기*/
         position: relative; /*포토프레임 밑에 있는 것: 디스크립션을 어디다가 기준을 설정할 것인가*/
         cursor: pointer ; /*마우스가 사진 위로 올라가면 포인터 아이콘으로 바뀜*/
@@ -58,31 +58,31 @@
         }
 
         .f-title {
-            color: white;
+            color: black;
             font-size: 25px;
             font-weight: 900; /*폰트 굵기 설정*/
         }
 
         .f-date {
-            color: white;
+            color: black;
             font-size: 10px;
             font-weight: 500; /*폰트 굵기 설정*/
         }
 
         #image1 {
-            background-image: url('./IMG_8704.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+            background-image: url('./KakaoTalk_Photo_2023-02-18-17-59-58\ 004.jpeg'); /*내 폴더에 있는 사진 으로 불러오기*/
         }
 
         #image2 {
-            background-image: url('./IMG_8778.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+            background-image: url('./KakaoTalk_Photo_2023-02-18-17-59-58\ 001.jpeg'); /*내 폴더에 있는 사진 './'로 불러오기*/
         }
 
         #image3 {
-            background-image: url('./IMG_8793.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+            background-image: url('./KakaoTalk_Photo_2023-02-18-17-59-58\ 002.jpeg'); /*내 폴더에 있는 사진 './'로 불러오기*/
         }
 
         #image4 {
-            background-image: url('./IMG_8808.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+            background-image: url('./KakaoTalk_Photo_2023-02-18-17-59-58\ 003.jpeg'); /*내 폴더에 있는 사진 './'로 불러오기*/
         }
 
         
@@ -163,7 +163,7 @@
         // 클릭 기능
         // 1. 선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
         function alertText(number) {
-            alert(`당신은 바보 멍청이입니다!! :)`);
+            alert(`저녁 먹을 시간입니다! :)`);
         }
 
         
@@ -177,7 +177,7 @@
             onmouseout="showText(1)"
             onclick="alertText(1)">
                 <span id="desc1" class="photo_description">
-                    돼지 녹차크림 소금빵 먹으면서 롤한 날
+                    스타워즈 잘 몰라도 재밌었었던 날
                 </span>     
             </div>
 
@@ -186,7 +186,7 @@
             onmouseout="showText(2)"
             onclick="alertText(2)">
                 <span id="desc2" class="photo_description">
-                    속초 시장에서 졸라 맛있는 게살 고로케 먹은 날
+                    여기 어디지
                 </span>
             </div>
               
@@ -195,7 +195,7 @@
             onmouseout="showText(3)"
             onclick="alertText(3)">
                 <span id="desc3" class="photo_description">
-                    내가 이동빈 얼굴 확대하고 도촬한 사진
+                    베스트 드라이버 경아 버스탄 날
                 </span>
             </div>
 
@@ -204,11 +204,11 @@
             onmouseout="showText(4)"
             onclick="alertText(4)">
                 <span id="desc4" class="photo_description">
-                    설악산 보이는 이름 이상한 카페가서 사기이글루 먹은 날
+                    칸쿤 클럽에서 제일 예쁜 여자랑 논 날
                 </span>
             </div>
         <div class="footer">
-            <p class="f-title">내가만든 코딩네컷><</p>
+            <p class="f-title">너가 만든 코딩네컷(별)</p>
             <p class="f-date">2023.02.18</p>
         </div>  
     </div>  

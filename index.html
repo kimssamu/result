@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      /* 이서윤체 폰트 적용을 위한 코드 */
+      @font-face {
+        font-family: "LeeSeoyun";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+        }
+
+      /* body태그 자체에 css 요소 부여 */
+        body {
+	    font-family: "LeeSeoyun";
+	    margin: 0; /*영역 바깥으로 남길 것이냐 */
+	    display: flex;
+        background-size: 50%;
+        background-position: -400%;
+	    justify-content: center; /* flexable하게 바꿀건데 가운데로 정렬*/
+	    background-image: url('./c1deb3d3aeb8a2bf6ebabe4e6d4aa52b_res.jpeg') /*같은 폴더안에있는 백그라운드 png를 가져와라*/
+        
+        }
+
+        /* 너비는 390픽셀이구, 배경색이 좀 필요하고 부모(body) 높이 전체를 쓸거야 */
+        .container {
+	    width: 290px;
+	    background-color: black;
+	    height: 100%; /*container을 둘러싸고 있는게 body태그인데 그 body를 전체를 차지하겠다는 뜻*/
+        }
+
+        /* 위로 여유가 20픽셀 정도 있었으면 좋겠네 */
+        .photos {
+	    margin-top: 20px;
+        }
+      
+        /* 배경은 알아보기 쉽게 흰색으로 해주고, 좌우 마진은 20픽셀 */
+        /* 상하 마진은 15픽셀로 해줘. 높이는 각 사진마다 200 픽셀로!*/
+        .photo-frame {
+	    background-color: white;
+	    margin: 20px 20px; /*세로와 가로의 마진 크기 정함*/ 
+	    height: 260px;
+        background-size: cover; /*이미지 크기 맞추기*/
+        position: relative; /*포토프레임 밑에 있는 것: 디스크립션을 어디다가 기준을 설정할 것인가*/
+        cursor: pointer ; /*마우스가 사진 위로 올라가면 포인터 아이콘으로 바뀜*/
+       
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column; /*내려가는 행으로 row로 하면 가로로 됨*/
+            align-items: center; /*가운데로 정렬*/
+        }
+
+        .f-title {
+            color: white;
+            font-size: 25px;
+            font-weight: 900; /*폰트 굵기 설정*/
+        }
+
+        .f-date {
+            color: white;
+            font-size: 10px;
+            font-weight: 500; /*폰트 굵기 설정*/
+        }
+
+        #image1 {
+            background-image: url('./IMG_8704.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+        }
+
+        #image2 {
+            background-image: url('./IMG_8778.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+        }
+
+        #image3 {
+            background-image: url('./IMG_8793.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+        }
+
+        #image4 {
+            background-image: url('./IMG_8808.JPG'); /*내 폴더에 있는 사진 './'로 불러오기*/
+        }
+
+        
+
+        .photo_description {
+            color: white;
+            background-color: black;
+            font-size: 12px;
+
+            width:max-content; /*글자 개수에 맞는 너비 조정*/
+            padding: 0 5px; /* 좌측과 우측은 20픽셀만큼, 위아래는 0 */
+            margin-bottom: 9px;
+
+            border-radius: 1px; /*경계선부분을 둥그렇게 만듬*/
+            position: absolute; /*아까 relative부분 기준으로 할 거임*/
+            bottom: 0; /*프레임 기준으로 0만큼만 올라와라*/
+
+            transform: translate(-50%); /*왼쪽에서 50퍼만큼 가운데 정렬*/
+            left: 50%;
+
+            opacity: 0; /*초반에 페이지 열릴 때 안보이도록 opacity는 불투명도임*/
+
+        }
+
+        /* opacity : 투명도를 의미해요! 0% 투명하다. 즉 다 보인다. */
+        .showText {
+	        opacity: 0;
+        }
+
+        /* opacity : 투명도를 의미해요! 100% 투명하다. 즉 안보인다. */
+        /* transition : 나타날 때 0.5초동안 천천히 나타나는 효과를 주라는 의미에요 */
+        .hideText {
+            opacity: 1;
+        transition: opacity 0.5s linear; /*애니메이션 효과*/
+        }
+		</style>
+
+        <script>
+        // 텍스트가 보여지는 기능
+        // 1. 몇 번째 사진에 마우스가 올라갔는지 확인(if문)
+        // 2. 해당 사진을 찾아 hideText class를 지워주고, showText는 삽입해줌
+        function showText(number) {
+        if (number === 1) {
+            document.querySelector("#desc1").classList.remove("hideText");
+            document.querySelector("#desc1").classList.add("showText");
+        } else if (number === 2) {
+            document.querySelector("#desc2").classList.remove("hideText");
+            document.querySelector("#desc2").classList.add("showText");
+        } else if (number === 3) {
+            document.querySelector("#desc3").classList.remove("hideText");
+            document.querySelector("#desc3").classList.add("showText");
+        } else {
+            document.querySelector("#desc4").classList.remove("hideText");
+            document.querySelector("#desc4").classList.add("showText");
+        } 
+        }
+        
+
+        // 텍스트가 감춰지는 기능
+        // 1. 몇 번째 사진에서 마우스가 벗어났는지 확인(if문)
+        // 2. 해당 사진을 찾아 shotText class를 지워주고, hideText는 삽입해줌
+        function hideText(number) {
+        if (number === 1) {
+            document.querySelector("#desc1").classList.remove("showText");
+            document.querySelector("#desc1").classList.add("hideText");
+        } else if (number === 2) {
+            document.querySelector("#desc2").classList.remove("showText");
+            document.querySelector("#desc2").classList.add("hideText");
+        } else if (number === 3) {
+            document.querySelector("#desc3").classList.remove("showText");
+            document.querySelector("#desc3").classList.add("hideText");
+        } else {
+            document.querySelector("#desc4").classList.remove("showText");
+            document.querySelector("#desc4").classList.add("hideText");
+        }
+    }
+
+        // 클릭 기능
+        // 1. 선택된 사진의 숫자를 가진 텍스트를 alert 형태로 출력해줌
+        function alertText(number) {
+            alert(`당신은 바보 멍청이입니다!! :)`);
+        }
+
+        
+</script>
+</head>
+<body>
+    <div class="container">
+        <div class="photos">
+            <div id="image1" class="photo-frame"
+            onmouseover="hideText(1)"
+            onmouseout="showText(1)"
+            onclick="alertText(1)">
+                <span id="desc1" class="photo_description">
+                    돼지 녹차크림 소금빵 먹으면서 롤한 날
+                </span>     
+            </div>
+
+            <div id="image2" class="photo-frame"
+            onmouseover="hideText(2)"
+            onmouseout="showText(2)"
+            onclick="alertText(2)">
+                <span id="desc2" class="photo_description">
+                    속초 시장에서 졸라 맛있는 게살 고로케 먹은 날
+                </span>
+            </div>
+              
+            <div id="image3" class="photo-frame"
+            onmouseover="hideText(3)"
+            onmouseout="showText(3)"
+            onclick="alertText(3)">
+                <span id="desc3" class="photo_description">
+                    내가 이동빈 얼굴 확대하고 도촬한 사진
+                </span>
+            </div>
+
+            <div id="image4" class="photo-frame"
+            onmouseover="hideText(4)"
+            onmouseout="showText(4)"
+            onclick="alertText(4)">
+                <span id="desc4" class="photo_description">
+                    설악산 보이는 이름 이상한 카페가서 사기이글루 먹은 날
+                </span>
+            </div>
+        <div class="footer">
+            <p class="f-title">내가만든 코딩네컷><</p>
+            <p class="f-date">2023.02.18</p>
+        </div>  
+    </div>  
+    </div>
+</body>
+</html>
